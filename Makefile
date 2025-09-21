@@ -41,6 +41,16 @@ build:
 	@echo "$(BLUE)Building Docker images...$(RESET)"
 	docker compose build --no-cache
 
+## Build only backend services
+build-backend:
+	@echo "$(BLUE)Building backend services...$(RESET)"
+	docker compose build --no-cache postgres pgadmin backend nginx
+
+## Build only frontend
+build-frontend:
+	@echo "$(BLUE)Building frontend...$(RESET)"
+	docker compose build --no-cache frontend
+
 ## Start all containers
 up:
 	@echo "$(BLUE)Starting containers...$(RESET)"
@@ -48,6 +58,14 @@ up:
 	@echo "$(GREEN)✅ Services started!$(RESET)"
 	@echo "$(YELLOW)Backend API:$(RESET)    http://localhost:3000"
 	@echo "$(YELLOW)Frontend:$(RESET)       http://localhost:5173"
+	@echo "$(YELLOW)pgAdmin:$(RESET)        http://localhost:8080"
+
+## Start only backend services  
+up-backend:
+	@echo "$(BLUE)Starting backend services...$(RESET)"
+	docker compose up -d postgres pgadmin backend nginx
+	@echo "$(GREEN)✅ Backend services started!$(RESET)"
+	@echo "$(YELLOW)Backend API:$(RESET)    http://localhost:3000"
 	@echo "$(YELLOW)pgAdmin:$(RESET)        http://localhost:8080"
 
 ## Stop all containers
