@@ -25,4 +25,10 @@ return [
     '@hotwired/turbo' => [
         'version' => '7.3.0',
     ],
+    'vite' => [
+        'version' => '7.1.7',
+    ],
+    'axios' => [
+        'version' => '1.12.2',
+    ],
 ];
